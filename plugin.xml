@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.priorityhealth.myhealth.iframelinks"
+    version="0.1.0">
+    <name>IFrameLinks</name>
+    <description></description>
+    <keywords>iframe,links</keywords>
+    <repo></repo>
+
+  <!-- ios -->
+  <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="IFrameLinks">
+                <param name="ios-package" value="IFrameLinks" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/IFrameLinks.h" />
+        <source-file src="src/ios/IFrameLinks.m" />
+    </platform>
+</plugin>

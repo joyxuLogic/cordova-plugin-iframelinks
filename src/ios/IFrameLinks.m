@@ -6,8 +6,10 @@
 {
     NSURL *url = [request URL];
     NSDictionary *settings = [(CDVViewController *)self.viewController settings];
-    
-    if ([[url scheme] isEqualToString:@"maps"] || [[settings objectForKey:@"launchexternalforhost"] isEqualToString:[url host]]) {
+
+    NSPredicate *hostTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [settings objectForKey:@"launchexternalforhost"]];
+
+    if ([[url scheme] isEqualToString:@"maps"] || [hostTest evaluateWithObject: [url host]]) {
         if ([[UIApplication sharedApplication] canOpenURL:url]) {
             [[UIApplication sharedApplication] openURL:url];
             return YES;
